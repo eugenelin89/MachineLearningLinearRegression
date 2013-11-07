@@ -18,17 +18,24 @@ for iter = 1:num_iters
     %
    
    
-	temp1 = 0;
-   for i=1:m,
-		temp1+=theta(1,1)+theta(2,1)*X(i,2)-y(i,1);
-	end;
-	temp1=theta(1,1)-(alpha/m)*temp1;
+	% temp1 = 0;
+   % for i=1:m,
+	% 	temp1+=theta(1,1)+theta(2,1)*X(i,2)-y(i,1);
+	% end;
+	% temp1=theta(1,1)-(alpha/m)*temp1;
+   
+	temp1 = theta(1,1) - (alpha/m)*sum(X * theta - y);
 
-	temp2=0;
-	for i=1:m,
-		temp2+=(theta(1,1)+theta(2,1)*X(i,2)-y(i,1))*X(i,2);
-	end;
-	temp2=theta(2,1)-(alpha/m)*temp2;
+	% temp2=0;
+	% for i=1:m,
+	% 	temp2+=(theta(1,1)+theta(2,1)*X(i,2)-y(i,1))*X(i,2);
+	% end;
+	% temp2=theta(2,1)-(alpha/m)*temp2;
+
+	temp2 = theta(2,1)-(alpha/m)*sum((X * theta -y) .* X(:,2));
+
+
+
 	theta(1,1) = temp1;
 	theta(2,1) = temp2;
 

@@ -18,7 +18,14 @@ J = 0;
 
 
 % =========================================================================
-for i=1:m,
-   J+=(theta(1,1)+theta(2,1)*X(i,2)-y(i,1))^2;
-end
-J=J/(2*m);
+% stupid way to do it...
+% for i=1:m,
+%    J+=(theta(1,1)+theta(2,1)*X(i,2)-y(i,1))^2;
+% end
+% J=J/(2*m);
+
+predictions = X*theta;
+sqrErrors = (predictions - y).^2; % squared errors
+J = 1/(2*m)*sum(sqrErrors);
+
+
