@@ -24,7 +24,6 @@ for iter = 1:num_iters
 	% end;
 	% temp1=theta(1,1)-(alpha/m)*temp1;
    
-	temp1 = theta(1,1) - (alpha/m)*sum(X * theta - y);
 
 	% temp2=0;
 	% for i=1:m,
@@ -32,12 +31,14 @@ for iter = 1:num_iters
 	% end;
 	% temp2=theta(2,1)-(alpha/m)*temp2;
 
-	temp2 = theta(2,1)-(alpha/m)*sum((X * theta -y) .* X(:,2));
+	%temp1 = theta(1,1) - (alpha/m) * sum((X * theta - y) .* X(:,1));
+	%temp2 = theta(2,1) - (alpha/m) * sum((X * theta - y) .* X(:,2));
 
+	%theta(1,1) = temp1;
+	%theta(2,1) = temp2;
 
+   theta = theta - ((alpha/m)*((X * theta - y)' * X))'; % Vectorized
 
-	theta(1,1) = temp1;
-	theta(2,1) = temp2;
 
     % ============================================================
 
