@@ -22,8 +22,15 @@ for iter = 1:num_iters
 
 
 
+	%temp1 = theta(1,1) - (alpha/m) * sum((X * theta - y) .* X(:,1));
+	%temp2 = theta(2,1) - (alpha/m) * sum((X * theta - y) .* X(:,2));
+	%temp3 = theta(3,1) - (alpha/m) * sum((X * theta - y) .* X(:,3));
+	%theta(1,1) = temp1;
+	%theta(2,1) = temp2;
+	%theta(3,1) = temp3;
 
 
+   theta = theta - ((alpha/m)*((X * theta - y)' * X))'; % Vectorized
 
 
 
@@ -31,7 +38,10 @@ for iter = 1:num_iters
 
     % Save the cost J in every iteration    
     J_history(iter) = computeCostMulti(X, y, theta);
+	printf('%f\n\n',J_history(iter));
 
 end
+
+
 
 end

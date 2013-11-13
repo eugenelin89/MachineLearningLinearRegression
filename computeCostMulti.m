@@ -15,8 +15,10 @@ J = 0;
 
 
 
-
-
+%predictions = X*theta;
+%sqrErrors = (predictions - y).^2; % squared errors
+%J = 1/(2*m)*sum(sqrErrors);
+J=computeCost(X,y,theta);
 % =========================================================================
 
 end
